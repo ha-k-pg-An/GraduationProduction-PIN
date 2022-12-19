@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pin : MonoBehaviour
-{
-    private float speed;
+{    
     public GameObject obj;
+    public GameObject obj2;
+
+    private float speed;
 
     // Start is called before the first frame update
     void Start()
     {
         speed = -10.0f;
+
         //初期化180度回転
         transform.Rotate(0.0f, 0.0f, 180.0f);
     }
@@ -29,13 +32,15 @@ public class Pin : MonoBehaviour
 
             //GameObject"tire"の子供となり、タイヤと共に回転する
             transform.parent = obj.transform;
-            
+
+            obj2.GetComponent<GameController>()
+                .AddScore(10);
         }
 
         if(collision.tag == "Pin")
         {
             //GameOverの処理
-
+            obj2.GetComponent<GameController>().GameOver();
         }
     }
 

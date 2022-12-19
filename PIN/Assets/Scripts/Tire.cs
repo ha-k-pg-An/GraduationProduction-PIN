@@ -22,8 +22,8 @@ public class Tire : MonoBehaviour
     void Start()
     {
         speed = 0.0f;
-        timeCounter = 0.0f;
-        rotateStep = RotateStep.STOPPING;
+        timeCounter = 1.5f;
+        rotateStep = RotateStep.SLOWRIGHT;
     }
 
     // Update is called once per frame

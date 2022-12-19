@@ -6,20 +6,29 @@ public class PinFactry : MonoBehaviour
 {
     public GameObject Prefab;
 
+    private bool canOperate;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        canOperate = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(canOperate == true)
         {
-            //ÉsÉìê∂ê¨
-            Instantiate(Prefab, transform.position, Quaternion.identity);
-        }
-        
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //ÉsÉìê∂ê¨
+                Instantiate(Prefab, transform.position, Quaternion.identity);
+            }
+        }        
+    }
+
+    public void ResumePin()
+    {
+        canOperate = true;
     }
 }
