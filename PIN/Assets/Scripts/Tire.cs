@@ -6,7 +6,7 @@ public class Tire : MonoBehaviour
 {
     private float speed;        //回転スピード
 
-    enum RotateStep
+    enum RotateStep     //タイヤの回転タイプ
     {
         STOPPING,            
         SLOWLEFT,           
@@ -29,7 +29,6 @@ public class Tire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.Rotate(0.0f, 0.0f, 100.0f*Time.deltaTime);
         switch(rotateStep)
         {
             case RotateStep.STOPPING:
