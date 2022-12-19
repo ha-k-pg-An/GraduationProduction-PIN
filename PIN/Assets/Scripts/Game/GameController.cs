@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -42,10 +43,12 @@ public class GameController : MonoBehaviour
         if(isOver == true)
         {
             endTimer -= Time.deltaTime;
-            if(endTimer <= 0.0f)
+            pinFactory.GetComponent<PinFactry>().StopPin();
+            if (endTimer <= 0.0f)
             {
+                PlayerPrefs.SetInt("Score", score);
                 //Œ‹‰ÊƒV[ƒ“‚Ö
-
+                SceneManager.LoadScene("Result");
             }
 
         }
@@ -54,6 +57,11 @@ public class GameController : MonoBehaviour
     public void AddScore(int add_value)
     {
         score += add_value;
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 
     public void ResetGame() 

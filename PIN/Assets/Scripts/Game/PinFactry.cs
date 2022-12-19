@@ -31,4 +31,9 @@ public class PinFactry : MonoBehaviour
     {
         canOperate = true;
     }
+
+    public void StopPin()
+    {
+        canOperate = false;
+    }
 }
