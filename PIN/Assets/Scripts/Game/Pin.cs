@@ -35,6 +35,8 @@ public class Pin : MonoBehaviour
 
             obj2.GetComponent<GameController>()
                 .AddScore(10);
+           // obj2.GetComponent<GameController>()
+               // .TireHit = true;
         }
 
         if(collision.tag == "Pin")
