@@ -19,6 +19,18 @@ public class GameController : MonoBehaviour
     private float endTimer;
     private float AddScoreUItimer;
 
+    [SerializeField]
+    private Image fadeImage;
+
+    private Color tempColor;
+
+    private void Awake()
+    {
+        tempColor = fadeImage.color;
+        tempColor.a = 0f;
+        fadeImage.color = tempColor;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +61,18 @@ public class GameController : MonoBehaviour
         {
             endTimer -= Time.deltaTime;
             pinFactory.GetComponent<PinFactry>().StopPin();
-            if (endTimer <= 0.0f)
+         
+            if (endTimer <= 1.0f)
             {
-                PlayerPrefs.SetInt("Score", score);
-                //結果シーンへ
-                SceneManager.LoadScene("Result");
+                tempColor.a += Time.deltaTime;
+                fadeImage.color = tempColor;
+
+                if (endTimer <= 0.0f)
+                {
+                    PlayerPrefs.SetInt("Score", score);
+                    //結果シーンへ
+                    SceneManager.LoadScene("Result");
+                }
             }
 
         }
@@ -80,8 +99,12 @@ public class GameController : MonoBehaviour
 
     public void AddScore(int add_value)
     {
-        score += add_value;     
-        TireHit = true;
+        if(isOver != true)
+        {
+            score += add_value;
+            TireHit = true;
+        }
+
     }
 
     public int GetScore()

@@ -26,7 +26,13 @@ public class Pin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Tire")
+        if (collision.tag == "Pin")
+        {
+            //GameOver‚Ìˆ—
+            obj2.GetComponent<GameController>().GameOver();
+        }
+
+        if (collision.tag == "Tire")
         {
             speed = 0.0f;
 
@@ -39,11 +45,7 @@ public class Pin : MonoBehaviour
                // .TireHit = true;
         }
 
-        if(collision.tag == "Pin")
-        {
-            //GameOver‚Ìˆ—
-            obj2.GetComponent<GameController>().GameOver();
-        }
+
     }
 
 }
