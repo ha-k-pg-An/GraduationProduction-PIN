@@ -94,7 +94,6 @@ public class GameController : MonoBehaviour
             AddScoreHint.text = "";
         }
 
-       // Debug.Log(TireHit);
     }
 
     public void AddScore(int add_value)

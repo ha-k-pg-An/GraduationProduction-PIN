@@ -19,7 +19,7 @@ public class PinFactry : MonoBehaviour
     {
         if(canOperate == true)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetMouseButtonDown(0))
             {
                 //ÉsÉìê∂ê¨
                 Instantiate(Prefab, transform.position, Quaternion.identity);
